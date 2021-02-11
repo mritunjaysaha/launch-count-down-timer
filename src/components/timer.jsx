@@ -1,6 +1,13 @@
+/**@jsxImportSource @emotion/core jsx */
+import { css } from "@emotion/core";
+
 export function Timer() {
     return (
-        <section>
+        <section
+            css={css`
+                padding: 1em;
+            `}
+        >
             <div>
                 <p>08</p>
                 <p>days</p>
