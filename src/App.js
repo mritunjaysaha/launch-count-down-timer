@@ -1,7 +1,13 @@
+import { Header } from "./components/header";
+import { Timer } from "./components/timer";
+import { SocialTabs } from "./components/socialTabs";
+
 function App() {
     return (
         <div className="App">
-            <header className="App-header">Launch Count Down Timer </header>
+            <Header />
+            <Timer />
+            <SocialTabs />
         </div>
     );
 }
