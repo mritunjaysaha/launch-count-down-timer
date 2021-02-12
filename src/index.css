@@ -16,4 +16,9 @@ html {
 body {
     font-family: "Red Hat Text", sans-serif;
     background-color: hsl(235, 16%, 14%);
+    background-image: url("./images/bg-stars.svg"),
+        url("./images/pattern-hills.svg");
+    background-repeat: no-repeat;
+    background-size: 100% 70%, 100% 24%;
+    background-position: top, bottom;
 }

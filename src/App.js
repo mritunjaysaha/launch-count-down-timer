@@ -17,7 +17,7 @@ function App() {
                 justify-content: space-between;
                 align-items: center;
                 text-align: center;
-                padding: 10em 2em;
+                padding: 12rem 0 4rem;
             `}
         >
             <Header />
