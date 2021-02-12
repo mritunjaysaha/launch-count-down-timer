@@ -19,6 +19,6 @@ body {
     background-image: url("./images/bg-stars.svg"),
         url("./images/pattern-hills.svg");
     background-repeat: no-repeat;
-    background-size: 100% 70%, 100% 24%;
-    background-position: top, bottom;
+    background-size: 100% 70%, 150% 24%;
+    background-position: top, 60% bottom;
 }
