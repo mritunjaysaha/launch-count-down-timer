@@ -1,0 +1,452 @@
+@import "./include";
+
+//--------------------------COLORS----------------------------
+// Primary
+$grayish-blue: hsl(237, 18%, 59%);
+// $soft-red: hsl(345, 95%, 68%);
+$soft-red-top: #d64f70; // Color taken with photoshop
+$soft-red-bottom: #ff5c89; // Color taken with photoshop
+
+// Neutral
+$white: hsl(0, 0%, 100%);
+$dark-desaturated-blue: hsl(236, 21%, 26%);
+// $very-dark-blue: hsl(235, 16%, 14%);
+// $very-dark-mostly-black-blue: hsl(234, 17%, 12%);
+$very-dark-blue: #251d2c; // Color taken with photoshop
+$very-dark-mostly-black-blue: #1e1e28; // Color taken with photoshop
+$top-card: #2c2c44; // Color taken with photoshop
+$bottom-card: #34364f; // Color taken with photoshop
+
+//--------------------------RESPONSIVE----------------------------
+// >=1440px
+$clock-width-1440: 60rem;
+$card-width-1440: 12rem;
+$card-tb-height-1440: 6rem;
+$span-font-size-1440: 7rem;
+// >=1024px
+$clock-width-1024: 50rem;
+$card-width-1024: 10rem;
+$card-tb-height-1024: 5rem;
+$span-font-size-1024: 6rem;
+// >375px && <1024px
+$clock-width-768: 40rem;
+$card-width-768: 8rem;
+$card-tb-height-768: 4rem;
+$span-font-size-768: 5rem;
+// <=375px
+$clock-width-375: 20rem;
+$card-width-375: 4rem;
+$card-tb-height-375: 2rem;
+$span-font-size-375: 2rem;
+
+.countdown-clock {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 60rem;
+
+    @include media(">=desktop") {
+        width: $clock-width-1440;
+    }
+    @include media(">tablet", "<desktop") {
+        width: $clock-width-1024;
+    }
+    @include media(">phone", "<=tablet") {
+        width: $clock-width-768;
+    }
+    @include media("<=phone") {
+        width: $clock-width-375;
+    }
+
+    .countdown {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .countdown-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+            @include media(">=desktop") {
+                width: $card-width-1440;
+            }
+            @include media(">tablet", "<desktop") {
+                width: $card-width-1024;
+            }
+            @include media(">phone", "<=tablet") {
+                width: $card-width-768;
+            }
+            @include media("<=phone") {
+                width: $card-width-375;
+            }
+            .card-top {
+                width: 100%;
+                border-radius: 10px 10px 0 0;
+                background-color: $top-card;
+                transform-origin: bottom;
+                overflow: hidden;
+                position: relative;
+                @include media(">=desktop") {
+                    height: $card-tb-height-1440;
+                }
+                @include media(">tablet", "<desktop") {
+                    height: $card-tb-height-1024;
+                }
+                @include media(">phone", "<=tablet") {
+                    height: $card-tb-height-768;
+                }
+                @include media("<=phone") {
+                    height: $card-tb-height-375;
+                }
+                //-------------------Little semi-circles-------------------
+                &::before {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    border-radius: 0 100% 0 0;
+                    content: " ";
+                    background: $very-dark-mostly-black-blue;
+                    @include media(">phone") {
+                        width: 0.5rem;
+                        height: 0.5rem;
+                    }
+                    @include media("<=phone") {
+                        width: 0.25rem;
+                        height: 0.25rem;
+                    }
+                }
+
+                &::after {
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+                    border-radius: 100% 0 0 0;
+                    content: " ";
+                    background: $very-dark-mostly-black-blue;
+                    @include media(">phone") {
+                        width: 0.5rem;
+                        height: 0.5rem;
+                    }
+                    @include media("<=phone") {
+                        width: 0.25rem;
+                        height: 0.25rem;
+                    }
+                }
+                //-------------------Number-------------------
+                span {
+                    position: absolute;
+                    bottom: 0;
+                    left: 50%;
+                    transform: translate(-50%, 50%);
+                    line-height: 1;
+                    color: $soft-red-top;
+                    @include media(">=desktop") {
+                        font-size: $span-font-size-1440;
+                    }
+                    @include media(">tablet", "<desktop") {
+                        font-size: $span-font-size-1024;
+                    }
+                    @include media(">phone", "<=tablet") {
+                        font-size: $span-font-size-768;
+                    }
+                    @include media("<=phone") {
+                        font-size: $span-font-size-375;
+                    }
+                }
+            }
+
+            .card-bottom {
+                width: 100%;
+                border-radius: 0 0 10px 10px;
+                background-color: $bottom-card;
+                transform-origin: top;
+                overflow: hidden;
+                position: relative;
+                @include media(">=desktop") {
+                    height: $card-tb-height-1440;
+                    box-shadow: 0 1rem $very-dark-mostly-black-blue;
+                }
+                @include media(">tablet", "<desktop") {
+                    height: $card-tb-height-1024;
+                    box-shadow: 0 0.75rem $very-dark-mostly-black-blue;
+                }
+                @include media(">phone", "<=tablet") {
+                    height: $card-tb-height-768;
+                    box-shadow: 0 0.5rem $very-dark-mostly-black-blue;
+                }
+                @include media("<=phone") {
+                    height: $card-tb-height-375;
+                    box-shadow: 0 0.25rem $very-dark-mostly-black-blue;
+                }
+                //-------------------Little semi-circles-------------------
+                &::before {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    border-radius: 0 0 100% 0;
+                    content: " ";
+                    background: $very-dark-mostly-black-blue;
+                    @include media(">phone") {
+                        width: 0.5rem;
+                        height: 0.5rem;
+                    }
+                    @include media("<=phone") {
+                        width: 0.25rem;
+                        height: 0.25rem;
+                    }
+                }
+
+                &::after {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    border-radius: 0 0 0 100%;
+                    content: " ";
+                    background: $very-dark-mostly-black-blue;
+                    @include media(">phone") {
+                        width: 0.5rem;
+                        height: 0.5rem;
+                    }
+                    @include media("<=phone") {
+                        width: 0.25rem;
+                        height: 0.25rem;
+                    }
+                }
+                //-------------------Number-------------------
+                span {
+                    position: absolute;
+                    top: 0;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    line-height: 1;
+                    color: $soft-red-bottom;
+                    @include media(">=desktop") {
+                        font-size: $span-font-size-1440;
+                    }
+                    @include media(">tablet", "<desktop") {
+                        font-size: $span-font-size-1024;
+                    }
+                    @include media(">phone", "<=tablet") {
+                        font-size: $span-font-size-768;
+                    }
+                    @include media("<=phone") {
+                        font-size: $span-font-size-375;
+                    }
+                }
+            }
+        }
+
+        .flip-card {
+            @extend .countdown-card;
+            perspective: 800px;
+            top: 0;
+            position: absolute;
+            z-index: 2;
+
+            .flip-card-top {
+                width: 100%;
+                border-radius: 10px 10px 0 0;
+                background-color: $top-card;
+                transform-origin: bottom;
+                overflow: hidden;
+                position: relative;
+                @include media(">=desktop") {
+                    height: $card-tb-height-1440;
+                }
+                @include media(">tablet", "<desktop") {
+                    height: $card-tb-height-1024;
+                }
+                @include media(">phone", "<=tablet") {
+                    height: $card-tb-height-768;
+                }
+                @include media("<=phone") {
+                    height: $card-tb-height-375;
+                }
+                //-------------------Little semi-circles-------------------
+                &::before {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    border-radius: 0 100% 0 0;
+                    content: " ";
+                    background: $very-dark-mostly-black-blue;
+                    @include media(">phone") {
+                        width: 0.5rem;
+                        height: 0.5rem;
+                    }
+                    @include media("<=phone") {
+                        width: 0.25rem;
+                        height: 0.25rem;
+                    }
+                }
+
+                &::after {
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+                    border-radius: 100% 0 0 0;
+                    content: " ";
+                    background: $very-dark-mostly-black-blue;
+                    @include media(">phone") {
+                        width: 0.5rem;
+                        height: 0.5rem;
+                    }
+                    @include media("<=phone") {
+                        width: 0.25rem;
+                        height: 0.25rem;
+                    }
+                }
+                //-------------------Number-------------------
+                span {
+                    position: absolute;
+                    bottom: 0;
+                    left: 50%;
+                    transform: translate(-50%, 50%);
+                    line-height: 1;
+                    color: $soft-red-top;
+                    @include media(">=desktop") {
+                        font-size: $span-font-size-1440;
+                    }
+                    @include media(">tablet", "<desktop") {
+                        font-size: $span-font-size-1024;
+                    }
+                    @include media(">phone", "<=tablet") {
+                        font-size: $span-font-size-768;
+                    }
+                    @include media("<=phone") {
+                        font-size: $span-font-size-375;
+                    }
+                }
+            }
+
+            .flip-card-bottom {
+                width: 100%;
+                border-radius: 0 0 10px 10px;
+                background-color: $bottom-card;
+                transform-origin: top;
+                overflow: hidden;
+                position: relative;
+                @include media(">=desktop") {
+                    height: $card-tb-height-1440;
+                }
+                @include media(">tablet", "<desktop") {
+                    height: $card-tb-height-1024;
+                }
+                @include media(">phone", "<=tablet") {
+                    height: $card-tb-height-768;
+                }
+                @include media("<=phone") {
+                    height: $card-tb-height-375;
+                }
+                //-------------------Little semi-circles-------------------
+                &::before {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    border-radius: 0 0 100% 0;
+                    content: " ";
+                    background: $very-dark-mostly-black-blue;
+                    @include media(">phone") {
+                        width: 0.5rem;
+                        height: 0.5rem;
+                    }
+                    @include media("<=phone") {
+                        width: 0.25rem;
+                        height: 0.25rem;
+                    }
+                }
+
+                &::after {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    border-radius: 0 0 0 100%;
+                    content: " ";
+                    background: $very-dark-mostly-black-blue;
+                    @include media(">phone") {
+                        width: 0.5rem;
+                        height: 0.5rem;
+                    }
+                    @include media("<=phone") {
+                        width: 0.25rem;
+                        height: 0.25rem;
+                    }
+                }
+                //-------------------Number-------------------
+                span {
+                    position: absolute;
+                    top: 0;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    line-height: 1;
+                    color: $soft-red-bottom;
+                    @include media(">=desktop") {
+                        font-size: $span-font-size-1440;
+                    }
+                    @include media(">tablet", "<desktop") {
+                        font-size: $span-font-size-1024;
+                    }
+                    @include media(">phone", "<=tablet") {
+                        font-size: $span-font-size-768;
+                    }
+                    @include media("<=phone") {
+                        font-size: $span-font-size-375;
+                    }
+                }
+            }
+
+            @keyframes top-to-bottom {
+                0% {
+                    transform: rotate3d(0);
+                }
+                50% {
+                    transform: rotate3d(-1, 0, 0, 90deg);
+                }
+                100% {
+                    transform: rotate3d(-1, 0, 0, 90deg);
+                }
+            }
+
+            @keyframes bottom-to-top {
+                0% {
+                    transform: rotate3d(1, 0, 0, 90deg);
+                }
+                50% {
+                    transform: rotate3d(1, 0, 0, 90deg);
+                }
+                100% {
+                    transform: rotate3d(0);
+                }
+            }
+        }
+        p {
+            text-transform: uppercase;
+            color: $grayish-blue;
+
+            @include media(">=desktop") {
+                font-size: 1rem;
+                margin: 2rem 0;
+                letter-spacing: 0.6rem;
+            }
+            @include media(">tablet", "<desktop") {
+                font-size: 0.8rem;
+                margin: 1.5rem 0;
+                letter-spacing: 0.6rem;
+            }
+            @include media(">phone", "<=tablet") {
+                font-size: 0.6rem;
+                margin: 1rem 0;
+                letter-spacing: 0.6rem;
+            }
+            @include media("<=phone") {
+                font-size: 0.4rem;
+                margin: 1rem 0;
+                letter-spacing: 0.2rem;
+            }
+        }
+    }
+}
